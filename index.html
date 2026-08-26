@@ -100,127 +100,60 @@ margin-top:20px;
 <body>
 
 <div class="page">
-
 <div class="card">
 
 <div class="heart">🎀 💗 🎈</div>
-
 <p>Someone has a little surprise for you... 👀</p>
 
 <div class="gift" onclick="openGift()">🎁</div>
-
-<button onclick="openGift()">
-🎁 OPEN YOUR SURPRISE
-</button>
-
+<button onclick="openGift()">🎁 OPEN YOUR SURPRISE</button>
 <p>Tap the gift, Zivah 😂💗</p>
 
-
 <div id="surprise" class="hidden">
-
 <hr>
-
 <div class="emoji">🎂🥳🎉</div>
 
 <h1>Happy Birthday, Zivah!</h1>
-
-<h2>18 November 💗</h2>
+<h2>21st Birthday 💗</h2>
 
 <p class="message">
-
 May your day be full of smiles, happiness,
 cake and lots of funny moments 😂💗
-
 <br><br>
-
 You deserve the best today and always! ✨
-
 <br><br>
-
 And remember...
-
 <br>
-
 <b>CAKE IS COMPULSORY! 🍰😂</b>
-
 </p>
-
 
 <div class="box">
-
 <h2>Why you're the bestie 😌💗</h2>
-
 <p class="message">
-
 😂 You make boring days funny.<br><br>
-
 🫶 You listen when it matters.<br><br>
-
 ✨ You make ordinary moments memorable.<br><br>
-
 😎 And somehow you tolerate Usman!
-
 </p>
-
 </div>
 
-
-<div class="emoji">
-🎈 💕 🧁 🎉
-</div>
-
+<div class="emoji">🎈 💕 🧁 🎉</div>
 <h2>Enjoy your special day, Zivah! 🥳</h2>
+<p class="message"><b>I'm lucky to have you as my Bestie! 💗</b></p>
 
-<p class="message">
-
-<b>
-I'm lucky to have you as my Bestie! 💗
-</b>
-
-</p>
-
-<div style="font-size:60px">
-🐻🎈💝
-</div>
-
-<p>
-— Usman 😎🤝
-</p>
+<div style="font-size:60px">🐻🎈💝</div>
+<p>— Usman 😎🤝</p>
 
 </div>
-
 </div>
-
 </div>
 
 <script>
-
 function openGift(){
-
-document.getElementById("surprise")
-.classList.remove("hidden");
-
-document.getElementById("surprise")
-.scrollIntoView({
-behavior:"smooth"
-});
-
+document.getElementById("surprise").classList.remove("hidden");
+document.getElementById("surprise").scrollIntoView({behavior:"smooth"});
 }
-
 </script>
 
 </body>
 </html>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Happy Birthday Zivah!</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {background: linear-gradient(#ff9a9e, #fad0c4); text-align:center; font-family:Arial; overflow:hidden; margin:0; padding:20px;}
-h1 {font-size:50px; color:#d1006b; margin-top:60px; animation:pop 1s infinite;}
-h2 {font-size:35px; color:#333;}
-p {font-size:20px; color:#444; max-width:600px; margin:20px auto;}
-@keyframes pop {0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-.balloon {width:50px; height:70px; border-radius:50%; position:absolute; bottom:-100px; animation:rise 6s linear infinite;}
-@keyframes rise {to{bottom:100vh; transform:translateX(100px)}}
