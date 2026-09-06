@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Happy Birthday Tayyab 🎂</title>
 
 <style>
@@ -11,191 +10,438 @@
     box-sizing:border-box;
 }
 
-body{
+html,body{
     margin:0;
-    font-family:Arial,sans-serif;
+    padding:0;
+    width:100%;
+    height:100%;
     overflow:hidden;
-    background:linear-gradient(135deg,#ffd6e8,#d8e8ff);
+    font-family:Arial,sans-serif;
+    background:#02060d;
+    color:white;
 }
 
-/* PAGES */
+/* ===== PAGE ===== */
+
 .page{
     display:none;
-    height:100vh;
     width:100%;
-    text-align:center;
+    height:100vh;
     position:relative;
+    overflow:hidden;
     justify-content:center;
     align-items:center;
     flex-direction:column;
+    text-align:center;
     padding:20px;
+
+    background:
+        radial-gradient(circle at 50% 45%,
+        rgba(0,190,255,.20),
+        transparent 28%),
+        radial-gradient(circle at 10% 90%,
+        rgba(0,90,255,.18),
+        transparent 30%),
+        radial-gradient(circle at 90% 10%,
+        rgba(0,220,255,.12),
+        transparent 25%),
+        #02060d;
 }
 
 .page.active{
     display:flex;
 }
 
-/* PAGE 1 */
+/* ===== FUTURISTIC GRID ===== */
+
+.page::before{
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+
+    background-image:
+        linear-gradient(rgba(0,200,255,.07) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,200,255,.07) 1px,transparent 1px);
+
+    background-size:45px 45px;
+
+    transform:perspective(500px)
+    rotateX(60deg);
+
+    animation:gridMove 7s linear infinite;
+
+    opacity:.7;
+}
+
+/* ===== GLOW ===== */
+
+.page::after{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(0,210,255,.15),
+        transparent 65%
+    );
+
+    filter:blur(20px);
+
+    animation:lightMove 6s ease-in-out infinite alternate;
+}
+
+/* Content above background */
+
+.page>*{
+    position:relative;
+    z-index:5;
+}
+
+/* ===== PAGE 1 ===== */
+
+.logo{
+    font-size:75px;
+    animation:pulse 1.5s infinite;
+}
+
 .title{
-    font-size:45px;
-    color:#ff4081;
-    animation:zoom 2s infinite alternate;
-    text-shadow:3px 3px 8px #aaa;
+    font-size:42px;
+    letter-spacing:5px;
+    margin:10px 0;
+
+    color:#00d9ff;
+
+    text-shadow:
+        0 0 8px #00d9ff,
+        0 0 25px #008cff,
+        0 0 45px #006eff;
+
+    animation:titleIn 1.5s ease,glow 2s infinite alternate;
 }
 
 .name{
-    font-size:55px;
-    color:#673ab7;
-    animation:bounce 1.5s infinite;
+    font-size:60px;
+    font-weight:bold;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #008cff;
+
+    animation:bounce 2s infinite;
 }
 
 .subtitle{
-    font-size:20px;
-    color:#555;
+    max-width:450px;
+    line-height:1.7;
+    color:#c5e9f7;
+    font-size:18px;
 }
+
+/* ===== BUTTON ===== */
 
 button{
-    border:none;
-    padding:14px 28px;
+    position:relative;
+    z-index:10;
+
+    margin-top:15px;
+    padding:14px 27px;
+
     border-radius:30px;
-    background:#ff4081;
+    border:1px solid #00d9ff;
+
+    background:#071827;
     color:white;
-    font-size:18px;
+
+    font-size:17px;
     cursor:pointer;
-    margin-top:20px;
-    box-shadow:0 5px 15px #aaa;
+
+    box-shadow:
+        0 0 10px #00d9ff,
+        inset 0 0 10px rgba(0,217,255,.1);
+
+    transition:.3s;
 }
 
-button:active{
-    transform:scale(.95);
+button:hover{
+    transform:scale(1.08);
+    box-shadow:
+        0 0 25px #00d9ff,
+        0 0 50px #006eff;
 }
 
-/* DECORATIONS */
-.star{
-    position:absolute;
+/* ===== PAGE 2 ===== */
+
+.page2-title{
+    color:#00d9ff;
     font-size:30px;
-    animation:float 3s infinite ease-in-out;
-}
-
-.s1{top:10%;left:10%}
-.s2{top:20%;right:10%}
-.s3{bottom:15%;left:15%}
-.s4{bottom:10%;right:15%}
-
-/* PAGE 2 */
-#page2{
-    background:linear-gradient(180deg,#cceeff,#fff0f7);
-}
-
-.balloons{
-    position:absolute;
-    top:20px;
-    width:100%;
-    display:flex;
-    justify-content:space-around;
-}
-
-.balloon{
-    font-size:55px;
-    animation:balloonFloat 2s infinite alternate;
+    text-shadow:0 0 20px #00d9ff;
+    animation:glow 2s infinite alternate;
 }
 
 .cake{
-    font-size:120px;
-    margin-top:50px;
-    animation:cakeBounce 1.5s infinite;
+    font-size:125px;
+    animation:cakeMove 1.5s infinite;
+    filter:drop-shadow(0 0 18px #00d9ff);
 }
 
-.candle{
+.candles{
     font-size:35px;
 }
 
 .cutText{
-    font-size:25px;
-    color:#673ab7;
-    font-weight:bold;
+    color:#c9efff;
+    font-size:19px;
 }
 
-/* PAGE 3 */
-#page3{
-    background:linear-gradient(135deg,#ffe0ec,#e4ddff);
+/* ===== BALLOONS ===== */
+
+.balloon{
+    position:absolute;
+    bottom:-100px;
+    font-size:45px;
+    animation:balloonUp 6s linear forwards;
+    z-index:4;
 }
+
+/* ===== PAGE 3 ===== */
 
 .wishBox{
-    background:white;
-    max-width:500px;
-    width:90%;
-    padding:30px;
+    width:92%;
+    max-width:520px;
+
+    padding:28px 22px;
+
+    background:rgba(3,14,27,.92);
+
+    border:1px solid #00d9ff;
     border-radius:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
-    animation:appear 1.5s ease;
+
+    box-shadow:
+        0 0 20px rgba(0,180,255,.5),
+        inset 0 0 25px rgba(0,180,255,.06);
+
+    animation:boxIn 1.2s ease;
 }
 
 .wishBox h1{
-    color:#ff4081;
+    color:#00d9ff;
+    text-shadow:0 0 15px #00d9ff;
 }
 
 .wishBox p{
-    font-size:18px;
+    font-size:17px;
     line-height:1.7;
-    color:#444;
+    color:#d8edf5;
+}
+
+.highlight{
+    color:white;
+    font-weight:bold;
 }
 
 .signature{
+    color:#00d9ff !important;
     font-weight:bold;
-    color:#673ab7;
 }
 
-/* CONFETTI */
+/* ===== PARTICLES ===== */
+
+.particle{
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#00d9ff;
+
+    box-shadow:
+        0 0 8px #00d9ff,
+        0 0 18px #008cff;
+
+    z-index:2;
+
+    animation:particleMove linear infinite;
+}
+
+/* ===== CONFETTI ===== */
+
 .confetti{
     position:absolute;
-    font-size:25px;
-    animation:fall 5s linear infinite;
+    top:-40px;
+    font-size:24px;
+    z-index:20;
+    animation:confettiFall linear forwards;
 }
 
-/* ANIMATIONS */
-@keyframes zoom{
-    from{transform:scale(1)}
-    to{transform:scale(1.08)}
+/* ===== ANIMATIONS ===== */
+
+@keyframes gridMove{
+    from{
+        transform:
+        perspective(500px)
+        rotateX(60deg)
+        translateY(0);
+    }
+
+    to{
+        transform:
+        perspective(500px)
+        rotateX(60deg)
+        translateY(45px);
+    }
+}
+
+@keyframes lightMove{
+    from{
+        transform:translate(-150px,-100px);
+    }
+
+    to{
+        transform:translate(150px,120px);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+@keyframes titleIn{
+    from{
+        opacity:0;
+        transform:translateY(-50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes glow{
+    from{
+        filter:brightness(1);
+    }
+
+    to{
+        filter:brightness(1.5);
+    }
 }
 
 @keyframes bounce{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-15px)}
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
 }
 
-@keyframes float{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-20px)}
+@keyframes cakeMove{
+    0%,100%{
+        transform:scale(1) rotate(0);
+    }
+
+    50%{
+        transform:scale(1.08) rotate(-3deg);
+    }
 }
 
-@keyframes balloonFloat{
-    from{transform:translateY(0)}
-    to{transform:translateY(-25px)}
+@keyframes balloonUp{
+    from{
+        transform:translateY(0) rotate(-10deg);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-120vh) rotate(15deg);
+        opacity:0;
+    }
 }
 
-@keyframes cakeBounce{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-10px)}
+@keyframes particleMove{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
 }
 
-@keyframes appear{
+@keyframes boxIn{
     from{
         opacity:0;
-        transform:scale(.5);
+        transform:scale(.7) translateY(40px);
     }
+
     to{
         opacity:1;
-        transform:scale(1);
+        transform:scale(1) translateY(0);
     }
 }
 
-@keyframes fall{
-    from{
-        transform:translateY(-100px) rotate(0deg);
-    }
+@keyframes confettiFall{
     to{
-        transform:translateY(110vh) rotate(360deg);
+        transform:
+        translateY(110vh)
+        rotate(720deg);
+
+        opacity:0;
+    }
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:500px){
+
+    .title{
+        font-size:32px;
+        letter-spacing:3px;
+    }
+
+    .name{
+        font-size:48px;
+    }
+
+    .subtitle{
+        font-size:16px;
+    }
+
+    .cake{
+        font-size:100px;
+    }
+
+    .wishBox{
+        padding:22px 18px;
+    }
+
+    .wishBox p{
+        font-size:16px;
     }
 }
 </style>
@@ -203,110 +449,121 @@ button:active{
 
 <body>
 
-<!-- PAGE 1 -->
+
+<!-- ================= PAGE 1 ================= -->
+
 <section class="page active" id="page1">
 
-    <div class="star s1">✨</div>
-    <div class="star s2">⭐</div>
-    <div class="star s3">💫</div>
-    <div class="star s4">✨</div>
+    <div class="logo">🎉</div>
 
-    <div style="font-size:70px;">🎉</div>
+    <h1 class="title">
+        HAPPY BIRTHDAY
+    </h1>
 
-    <h1 class="title">HAPPY BIRTHDAY</h1>
-
-    <div class="name">Tayyab 🎂</div>
-
-    <p class="subtitle">
-        Aaj ka din thora special hai... 👀✨
-    </p>
+    <div class="name">
+        TAYYAB 🎂
+    </div>
 
     <p class="subtitle">
-        Kyun ke aaj ek innocent sa banda paida hua tha 😂
+        Aaj ka din thora special hai... 👀
+        <br><br>
+        Kyun ke aaj hamare innocent se
+        legend ka birthday hai! 😂🔥
     </p>
 
     <button onclick="nextPage(2)">
-        🎁 Surprise Continue
+        🚀 OPEN SURPRISE
     </button>
 
 </section>
 
 
-<!-- PAGE 2 -->
+<!-- ================= PAGE 2 ================= -->
+
 <section class="page" id="page2">
 
-    <div class="balloons">
-        <div class="balloon">🎈</div>
-        <div class="balloon">🎈</div>
-        <div class="balloon">🎈</div>
-        <div class="balloon">🎈</div>
-    </div>
-
-    <h1 style="color:#ff4081;">
-        It's Cake Cutting Time! 🎂
+    <h1 class="page2-title">
+        🎂 CAKE CUTTING TIME 🎂
     </h1>
 
     <div class="cake">
         🎂
     </div>
 
-    <div class="candle">
-        🕯️🕯️🕯️
+    <div class="candles">
+        🕯️ 🕯️ 🕯️
     </div>
 
     <p class="cutText">
-        Tayyab bhai, cake kaat do 😂
+        Tayyab bhai, pehle wish karo...<br>
+        phir cake kaato 😂
     </p>
 
     <button onclick="cutCake()">
-        🔪 Cut The Cake 🎂
+        🔥 CUT THE CAKE
     </button>
 
     <button onclick="nextPage(3)">
-        ❤️ Birthday Wishes
+        💙 SEE YOUR WISHES
     </button>
 
 </section>
 
 
-<!-- PAGE 3 -->
+<!-- ================= PAGE 3 ================= -->
+
 <section class="page" id="page3">
 
     <div class="wishBox">
 
-        <div style="font-size:60px;">
-            🎂🥳🎈
+        <div style="font-size:55px;">
+            🎂🥳🎉
         </div>
 
-        <h1>Happy Birthday Tayyab! ❤️</h1>
+        <h1>
+            Happy Birthday Tayyab! 💙
+        </h1>
 
         <p>
-            Allah tumhari zindagi ko khushiyon,
-            success aur bohat sari achi memories
-            se bhar de. 🤲✨
+            Allah tumhari zindagi ko hamesha
+            khushiyon, kamyabi aur sukoon se
+            bhar de. 🤲✨
         </p>
 
         <p>
-            Hamesha khush raho, haste raho aur
-            isi tarah <b>innocent</b> bane raho...
-            😂😂
+            Tumhari har achi wish puri ho,
+            tumhare har goal mein success mile,
+            aur tumhari life mein hamesha
+            positive vibes rahen. 🌟
         </p>
 
         <p>
-            Aur bhai ek important baat...
-            <br>
-            <b>Treat dena bilkul mat bhoolna! 👀🍕😂</b>
+            Hamesha haste raho, khush raho aur
+            isi tarah <span class="highlight">
+            innocent
+            </span>
+            bane raho... 😂
         </p>
 
         <p>
-            May this new year of your life bring
-            you lots of happiness and success.
+            Aur bhai birthday tumhara hai,
+            lekin ek choti si request hai...
+            <br><br>
+            <span class="highlight">
+            TREAT KA INTEZAR RAHEGA! 👀😂🍕
+            </span>
+        </p>
+
+        <p>
+            May this new year of your life
+            bring you countless happy moments,
+            amazing memories and lots of success.
             ❤️
         </p>
 
         <p class="signature">
-            Once again...<br>
-            HAPPY BIRTHDAY TAYYAB! 🎉🎂❤️
+            Stay blessed bro! 💙<br><br>
+            HAPPY BIRTHDAY ONCE AGAIN! 🎉🎂
         </p>
 
     </div>
@@ -316,75 +573,129 @@ button:active{
 
 <script>
 
+/* ===== CREATE PARTICLES ===== */
+
+for(let i=0;i<40;i++){
+
+    let p=document.createElement("div");
+
+    p.className="particle";
+
+    p.style.left=Math.random()*100+"%";
+
+    p.style.animationDuration=
+        (4+Math.random()*7)+"s";
+
+    p.style.animationDelay=
+        Math.random()*6+"s";
+
+    document.body.appendChild(p);
+}
+
+
+/* ===== CHANGE PAGE ===== */
+
 function nextPage(number){
 
-    document.querySelectorAll(".page").forEach(function(page){
+    document.querySelectorAll(".page")
+    .forEach(function(page){
         page.classList.remove("active");
     });
 
-    document.getElementById("page"+number).classList.add("active");
+    document.getElementById("page"+number)
+    .classList.add("active");
 
-    if(number === 2){
+    if(number===2){
         createBalloons();
     }
 
-    if(number === 3){
+    if(number===3){
         createConfetti();
     }
 }
 
 
+/* ===== CAKE ===== */
+
 function cutCake(){
 
-    alert("🎉 Cake successfully cut! 😂🎂");
-
     createConfetti();
+
+    setTimeout(function(){
+
+        alert(
+            "🎉 Cake successfully cut! 😂🎂"
+        );
+
+    },300);
 }
 
 
+/* ===== BALLOONS ===== */
+
 function createBalloons(){
 
-    for(let i=0;i<15;i++){
+    for(let i=0;i<20;i++){
 
-        let balloon=document.createElement("div");
+        let b=document.createElement("div");
 
-        balloon.innerHTML="🎈";
+        b.className="balloon";
 
-        balloon.style.position="absolute";
-        balloon.style.left=Math.random()*100+"%";
-        balloon.style.bottom="-50px";
-        balloon.style.fontSize=(25+Math.random()*30)+"px";
-        balloon.style.animation="float 4s ease-in-out";
+        b.innerHTML="🎈";
 
-        document.getElementById("page2").appendChild(balloon);
+        b.style.left=
+            Math.random()*100+"%";
 
-        setTimeout(()=>{
-            balloon.remove();
-        },4000);
+        b.style.animationDuration=
+            (4+Math.random()*4)+"s";
+
+        b.style.animationDelay=
+            Math.random()*3+"s";
+
+        document.getElementById("page2")
+        .appendChild(b);
+
+        setTimeout(function(){
+            b.remove();
+        },9000);
     }
 }
 
 
+/* ===== CONFETTI ===== */
+
 function createConfetti(){
 
-    for(let i=0;i<35;i++){
+    for(let i=0;i<50;i++){
 
         let c=document.createElement("div");
 
         c.className="confetti";
 
-        c.innerHTML=["🎉","🎈","✨","🎊","❤️","🥳"]
-        [Math.floor(Math.random()*6)];
+        c.innerHTML=[
+            "🎉",
+            "🎊",
+            "✨",
+            "⭐",
+            "🎈",
+            "🥳"
+        ][Math.floor(Math.random()*6)];
 
-        c.style.left=Math.random()*100+"%";
-        c.style.animationDuration=(3+Math.random()*4)+"s";
-        c.style.animationDelay=Math.random()*2+"s";
+        c.style.left=
+            Math.random()*100+"%";
 
-        document.getElementById("page3").appendChild(c);
+        c.style.animationDuration=
+            (3+Math.random()*4)+"s";
 
-        setTimeout(()=>{
+        c.style.animationDelay=
+            Math.random()*2+"s";
+
+        document.getElementById("page3")
+        .appendChild(c);
+
+        setTimeout(function(){
             c.remove();
-        },7000);
+        },8000);
     }
 }
 
